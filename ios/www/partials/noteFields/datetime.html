@@ -1,0 +1,12 @@
+<ons-row >
+    <ons-col width="40%" for="{{field.id}}" >
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;" ng-hide="clone.cloned" >
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <span class="field-value" ng-repeat="value in field.value">{{value}}</span>
+        </font>
+    </ons-col>
+</ons-row>

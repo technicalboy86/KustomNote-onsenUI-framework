@@ -1,0 +1,26 @@
+
+
+<ons-page ng-controller="LoginController" sliding-menu-ignore="true" class="login_page">
+    <section class="login_section">
+        <ons-toolbar class="login_toolbar">
+            <div class="left" ><ons-back-button ></ons-back-button></div>
+            <div class="center"><img src="img/KN-Logo.png"></div>
+        </ons-toolbar>
+    <br><br>
+    <div class="signup-text">Sign in with your username and password.</div>
+    
+    <form class="login-form" >
+    <input type="email" ng-model="loginEmail" name="email" id="username" placeholder="Email" class="text-input--underbar"/>
+    <input type="password" type="text" ng-model="loginPass" class="text-input--underbar" name="password" id="password" placeholder="Password"/>
+    <br>
+    <button class="button forgot-button" ng-click="gotoForgotPswPage()">Forgot your password?</button>
+    <br><br><br>
+    <div class="submit">
+        <button class="button login-button" id="loginButton" ng-click="validateUser(loginEmail, loginPass)">Sign in</button>
+    </div>
+    </form>
+    </section>
+</ons-page>
+
+
+

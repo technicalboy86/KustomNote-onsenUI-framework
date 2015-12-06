@@ -1,0 +1,44 @@
+    <label  class="field-label" ng-init="googleCalendar(field.id, field.social_id, field)" ng-hide="clone.cloned" for="{{field.id}}">{{field.title}}</label>
+    <!--<input ng-required="field.required" ui-if="!clone.cloned" id="{{field.id}}" name="{{field.id}}" ng-model="field.value" type="date" />
+    <input ng-required="field.required" ui-if="clone.cloned" id="{{field.id}}" name="{{field.id}}" ng-model="clone.value" type="date" />-->
+
+    <span style="margin-right: 10px; font-size: 14px;">Calendar</span><select ng-model="field.cal" ng-options="calendar.name for calendar in calendars.calendars"></select>
+    <input type="date" style="width:30%;" ng-model="field.fromDate" datepicker="field.fromDate"  class="text-input"/>
+    to
+    <input type="date" style="width:30%;" ng-model="field.toDate" datepicker="field.toDate"  class="text-input"/>
+
+    <div class="checkbox-container" style="display: inline-block; top: 0; left: 10px;">
+        <input class="checkbox-input" id="{{field.id}}-0" name="{{field.id}}" type="checkbox" ng-model="field.allDay" />
+        <label style="top: 2px;" ng-click="setCheck(field, 0)" class="checkbox-label" for="{{field.id}}-0"><span style="top:2px;" class="checkbox-icon"></span><span style="left:10px;" class="checkbox-text">All Day</span></label>
+    </div>
+
+    <div collapse="field.value[0]">
+        <input type="time" style="width:30%; margin-right: 1em;" ng-model="field.fromTime" datepicker="field.fromTime"  class="text-input"/>
+        <input type="time" style="width:30%;" ng-model="field.toTime" datepicker="field.toTime" class="text-input" />
+    </div>
+
+    &nbsp;&nbsp;&nbsp;<label class="checkbox-container checkbox" >
+            <input class="checkbox-input" id="{{field.id}}-1" name="{{field.id}}" type="checkbox" ng-model="field.setReminder" />
+            <div  ng-click="setCheck(field, 1)"  class="checkbox__checkmark" for="{{field.id}}-1"></div>
+            Set Reminder
+    </label>
+    
+
+    <div style="max-width: 100%;" collapse="!field.value[1]">
+        <select ng-required="field.value[1]" style="width: 25%; margin: 0 2% 0 0" ng-model="field.remindBy"  class="text-input">
+            <option value="email">Email</option>
+            <option value="popup">Popup</option>
+        </select>
+        <input ng-required="field.value[1]" style="width: 25%; margin: 0 2%" type="number" ng-model="field.remindVal"  class="text-input"/>
+        <select ng-required="field.value[1]" style="width: 25%; margin: 0 0 0 2%" ng-model="field.remindUnit"  class="text-input">
+            <option value="m">Minute(s)</option>
+            <option value="h">Hour(s)</option>
+            <option value="d">Day(s)</option>
+            <option value="w">Week(s)</option>
+        </select>
+    </div>
+
+    <!--
+      <button ng-hide="clone.cloned" class="add btn" ng-click="addField(field, $index)">Add</button>
+      <button ng-show="clone.cloned" class="remove btn" ng-click="removeField(field, $index)">Remove</button>
+    -->

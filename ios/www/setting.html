@@ -1,0 +1,89 @@
+<ons-page ng-controller="SettingController" sliding-menu-ignore="true" >
+    <ons-toolbar class="header-container">
+
+        <div class="center">Settings</div>
+    <!--    <div class="right">
+            <ons-toolbar-button  ng-click="gotoEditSettingPage();">
+                Edit
+            </ons-toolbar-button>
+        </div>-->
+    </ons-toolbar>
+    <section class="setting_section">
+    <br>
+   <div class="profile_img_rect">
+        <img class="profile_img" src="img/user_profile.png" id="profile_img" ng-click="profile_photo_add();"/>
+    </div>
+   <ons-list class="list-top" style="margin-top:10px;background:white; width:96%; margin-left:2%;line-height:20px;">
+   <ons-list-item>
+       <ons-row>
+           <ons-col  width="30%">
+               <font class="setting_field_label">email</font>
+           </ons-col>
+           <ons-col>
+               <div>{{email}}</div>
+           </ons-col>
+       </ons-row>
+       
+   </ons-list-item>
+
+   </ons-list>
+   <!--
+    <ons-list class="list-top" style="margin-top:10px;background:white; width:96%; margin-left:2%;line-height:20px;">
+        <ons-list-item>
+            <ons-row>
+                <ons-col>
+                    <font class="setting_field_label">Profile Name</font>
+                </ons-col>
+                <ons-col>
+                    Tom User
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+        <ons-list-item>
+            <ons-row>
+                <ons-col>
+                    <font class="setting_field_label">Biography</font>
+                </ons-col>
+            </ons-row>
+            <ons-row>
+                <ons-col>
+                   <p style="line-height:20px;"> Integer posuere eratet Integer posuere eratet Integer posuere eratet Integer posuere eratet</p>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+        <ons-list-item>
+            <ons-row>
+                <ons-col>
+                    <font class="setting_field_label">Unique URL</font>
+                </ons-col>
+                <ons-col>
+                    Tom User
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+        <ons-list-item>
+            <ons-row>
+                <ons-col>
+                    <font class="setting_field_label">Website</font>
+                </ons-col>
+                <ons-col>
+                    www.bing.com
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+    -->
+    <br>
+    <button class="button login-button" ng-click="logout();">Sign out</button>
+    <br>
+    </section>
+    <ons-bottom-toolbar class="footbar" >
+        <div ng-repeat="item in items" ng-click="showMenuDetail($index)" class="home_bottom_toolbar {{item.active}}">
+            <ons-toolbar-button >
+                <ons-icon icon="{{item.icon}}" class="b_icon"></ons-icon>
+                <div class="b_icon_txt">{{item.title}}</div>
+            </ons-toolbar-button>
+        </div>
+    </ons-bottom-toolbar>
+    
+</ons-page>

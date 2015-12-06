@@ -1,0 +1,78 @@
+<ons-page ng-controller="AdvancedSearchViewController" sliding-menu-ignore="true"  >
+    <ons-toolbar>
+        <div class="center">
+            
+            <ons-row style="margin:0px ; display:block; width:90%; margin-left:5%;">
+                <div class="button-bar" style="width:100%;">
+                    <div class="button-bar__item" ng-click="gotoSimpleSearch()">
+                        <input type="radio" name="segment-a"  />
+                        <button class="button-bar__button">Simple</button>
+                    </div>
+                    <div class="button-bar__item">
+                        <input type="radio" name="segment-a" checked/>
+                        <button class="button-bar__button">Advanced</button>
+                    </div>
+                </div>
+            </ons-row>
+        </div>
+    </ons-toolbar>
+    <section >
+        <div class="filter_label">Filter by template:</div>
+
+        <ons-list-item modifier="chevron" class="select_template_btn_rect">
+            <ons-row ng-click="onSelectTemplateBtn()" >
+                <ons-col>
+                    <div class="select_template_btn"><i>{{selectedTemplateName}}</i></div>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+        
+        <div ng-show="{{!IsSelected}}" class="filter_small_label"><i>Select a template to search within notes using template fields.</i></div>
+        <div ng-show="{{IsSelected}}" class="filter_label">Search within notes using template fields:</div>
+        
+        <ons-list-item style="background:#ddd; font-size:0.8em; line-height:20px; border:1px solid #ddd; margin-top:5px;" ng-show="IsThereSelectedField()" ng-repeat="aField in selectedFieldData">
+            <ons-row>
+                <ons-col width="10%" ng-click="onDeleteBtn($index)">
+                    <i class="fa fa-minus-circle" style="color:red; font-size:2em; margin-top:30px; width20px; height:20px;"></i>
+                </ons-col>
+                <ons-col >
+                     <ons-list-item modifier="chevron" style="background:white !important; border:1px solid #ddd;">
+                         <ons-row height="20px;">
+                             <ons-col width="40%"><font style="color:#999;">Field Name</font></ons-col>
+                             <ons-col >{{aField.title}}</ons-col>
+                         </ons-row>
+                     </ons-list-item>
+                     <ons-list-item style="background:white !important; border:1px solid #ddd;">
+                         <ons-row height="20px;">
+                             <ons-col width="40%"><font style="color:#999;">Field Contents</font></ons-col>
+                             <ons-col >
+                                 <input type="text" placeholder="Enter search terms" class="text-input--underbar" style="margin-top:5px !important;width:100% !important;" ng-model="aField.searchWord"/>
+                             </ons-col>
+                         </ons-row>
+                     </ons-list-item>
+                </ons-col>
+
+ <!--               <ons-col class="delete_slide_btn" width="20%" height="100%" ng-show="deleteFlag" ng-click="onDeleteBtn();">
+                    <p style="margin-top:20px;">Delete</p>
+                </ons-col>
+  -->
+            </ons-row>
+        </ons-list-item>
+        
+        
+        <div ng-show="{{IsSelected}}" class="add_search_field_btn" ng-click="onSelectAddFieldBtn()">Add Search Field</div>
+      <!--  <div ng-show="{{IsSelected}}" ng-if="IsThereSelectedField" class="add_search_field_btn" ng-click="onSearchBtn()">Search</div>-->
+        <div ng-show="{{IsSelected}}" class="filter_small_label"><i>You can add multiple fields to modiry your results.</i></div>
+        <br>
+        <div class="add_search_field_btn" ng-click="OnSearchBtn()"><i class="fa fa-search"></i>&nbsp;Search</div>
+        <br>
+    </section>
+    <ons-bottom-toolbar class="footbar" >
+        <div  ng-repeat="item in items" ng-click="showDetail($index)" class="home_bottom_toolbar {{item.active}}">
+            <ons-toolbar-button >
+                <ons-icon icon="{{item.icon}}" class="b_icon"></ons-icon>
+                <div class="b_icon_txt">{{item.title}}</div>
+            </ons-toolbar-button>
+        </div>
+    </ons-bottom-toolbar>
+</ons-page>

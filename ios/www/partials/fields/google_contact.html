@@ -1,0 +1,25 @@
+<!--
+    <label class="field-label" for="mock_id_field_{{field.id}}">{{field.title}}</label>
+    <input ng-required="field.required" id="mock_id_field_{{field.id}}" ng-model="field.displayValue" type="text"  class="text-input"/>
+
+    <input ng-init="smartSuggest(field.id, field.social_id, field.type)" id="{{field.id}}" type="hidden"  class="text-input"/>
+
+
+      <button ng-hide="clone.cloned" class="add btn" ng-click="addField(field, $index)">Add</button>
+      <button ng-show="clone.cloned" class="remove btn" ng-click="removeField(field, $index)">Remove</button>
+    -->
+
+<ons-row >
+    <ons-col width="40%" for="mock_id_field_{{field.id}}" >
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;" ng-hide="clone.cloned" >
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <input ng-required="field.required" id="mock_id_field_{{field.id}}" ng-model="field.displayValue" type="text"  class="text-input" style="width:95% !important;"/>
+            
+            <input ng-init="smartSuggest(field.id, field.social_id, field.type)" id="{{field.id}}" type="hidden"  class="text-input" style="width:95% !important;"/>
+        </font>
+    </ons-col>
+</ons-row>

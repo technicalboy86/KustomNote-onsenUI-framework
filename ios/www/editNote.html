@@ -1,0 +1,98 @@
+<ons-page ng-controller="editNoteController" class="new_note_page">
+    <ons-toolbar class="header-container">
+        <div class="left" ><ons-back-button ></ons-back-button></div>
+        <div class="center">KustomNote</div>
+        <div class="right">
+            <ons-toolbar-button ng-click="noteSave(template, noteIndex)">
+                <font style="color:#666;">Create</font>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <section style="padding: 10px;  height:100% !important;">
+        <form id="{{template.id}}" name="noteForm" class="fields-form">
+            
+            <ons-row style="padding: 0 0 10px 0;">
+                <ons-col>
+                    <div>
+                        <font style="color:white; padding:3px; border-radius:3px; background:{{template.color}}">{{template.title}}</font>
+                    </div>
+                </ons-col>
+            </ons-row>
+            
+            <ons-row style="padding: 10px; border-bottom:1px solid #d0d0d0; background:white; margin-top:1px; " ng-if="template.pick_notebook" >
+                <ons-col width="40%"  >
+                    <font style="font-weight:bold; font-size:0.8em; color:#666;">Pick Notebook</font>
+                </ons-col>
+                <ons-col>
+                    <font style="font-size:0.8em; ">
+                        <select required ng-model="template.notebook" ng-init="template.notebook = notebooks[0]" ng-options="nb.name group by nb.group for nb in notebooks" class="select_comb text-input">
+                            <option value="" style="display:none;" ></option>
+                        </select>
+                    </font>
+                </ons-col>
+            </ons-row>
+            
+            <ons-row style="padding: 10px; border-bottom:1px solid #d0d0d0; background:white; margin-top:1px; " id="field-{{field.id}}" ng-class="{'required-label': field.required}" ng-repeat="field in template.fields" >
+                <div style="display:table;margin-top:1px;padding:0;width:99%; padding-bottom:0px;">
+                    <span ng-if="field.type=='textarea'" ng-include="'partials/fields/' + field.type + '.html'" ></span >
+                    <span ng-if="field.type!='textarea'" ng-include="'partials/fields/' + field.type + '.html'" ></span >
+                </div>
+            </ons-row>
+            
+            <ons-row style="padding: 10px; border-bottom:1px solid #d0d0d0; background:white; margin-top:1px; " >
+                <ons-col width="40%"  >
+                    <font style="font-weight:bold; font-size:0.8em; color:#666;">Send Reminder</font>
+                </ons-col>
+                <ons-col >
+                    <font style="font-size:0.8em; ">
+                        <input type="email" id="reminder-email" ng-model="template.reminder_email" placeholder="Email Address"  class="text-input" style="width:80% !important"/>
+                    </font>
+                    
+                </ons-col>
+            </ons-row>
+            <ons-row style="padding: 5px; border-bottom:1px solid #d0d0d0; background:white; " >
+                <ons-col width="20%"  >
+                    <font style="font-weight:bold; font-size:0.8em; color:#666;"></font>
+                </ons-col>
+                <ons-col >
+                    <font style="font-size:0.8em; ">
+                        <input type="datetime-local" id="reminder-date" ng-model="template.reminder_datetime" datepicker="template.reminder_datetime"  class="text-input" />
+                    </font>
+                </ons-col>
+            </ons-row>
+            <br>
+        </form>
+    </section>
+<!--
+<form id="{{template.id}}" name="noteForm" class="fields-form">
+    
+
+    <div class="field-wrapper notebooks" ng-if="template.pick_notebook">
+        <label class="field-label">Pick Notebook</label><br />
+        <select required ng-model="template.notebook" ng-init="template.notebook = notebooks[0]" ng-options="nb.name group by nb.group for nb in notebooks" class="select_comb text-input">
+            <option value="" style="display:none;" ></option>
+        </select>
+    </div>
+
+    <div id="field-{{field.id}}" class="field-wrapper" ng-class="{'required-label': field.required}" ng-repeat="field in template.fields">
+        <span ng-if="field.type=='textarea'" class="fields input not-clone" ng-include="'partials/fields/' + field.type + '.html'" ></span >
+        <span ng-if="field.type!='textarea'"  class="fields {{field.type}} not-clone" ng-include src="'partials/fields/' + field.type + '.html'"></span>
+        <a ng-hide="hideMe" ng-init="hideMe = exclude(field.type);" class="add btn btn-success" ng-click="addField(field, $index)"><i class="icon-plus-sign"></i></a>
+        <div class="clone-wrapper" ng-repeat="clone in field.clones">
+            <span class="clones fields input" ng-include src="'partials/fields/' + field.type + '.html'"></span>
+            <a ng-show="clone.cloned" class="remove btn btn-danger" ng-click="removeField(field, $index)"><i class="icon-trash"></i></a>
+        </div>
+    </div>
+	
+    <div class="reminder field-wrapper">
+        <label class="field-label">Send Reminder:</label><br />
+        <input type="email" id="reminder-email" ng-model="template.reminder_email" placeholder="Email Address"  class="text-input"/>
+        <input type="datetime-local" id="reminder-date" ng-model="template.reminder_datetime" datepicker="template.reminder_datetime"  class="text-input"/>
+    </div>
+    
+    <br>
+</form>
+-->
+
+</ons-page>

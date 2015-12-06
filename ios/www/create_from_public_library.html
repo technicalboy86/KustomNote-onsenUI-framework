@@ -1,0 +1,26 @@
+<ons-page ng-controller="PublicTemplateController"  sliding-menu-ignore="true">
+    
+    <ons-toolbar>
+    
+    <div class="center">Public Template Library</div>
+    <div class="right">
+        <ons-toolbar-button ng-click="doneBtn()">
+            Done
+        </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+
+    <ons-list class="list-top">
+        <ons-list-item modifier="chevron" ng-repeat="category in categories">
+            <ons-row ng-click="showDetail($index)">
+                <ons-col>
+                    {{category.name}}
+                </ons-col>
+            
+                <ons-col width="35%" style="font-size:0.8em;">
+                    {{category.count}}&nbsp;Template
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

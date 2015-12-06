@@ -1,0 +1,45 @@
+<ons-page ng-controller="NoteDetailController" class="note_detail_page">
+    
+    <ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+    <div class="center">{{note.note_title}}</div>
+    <div class="right">
+        <ons-toolbar-button  ng-click="gotoEditNote();">
+            Edit
+        </ons-toolbar-button>
+    </div>
+    
+    </ons-toolbar>
+
+    <section style="padding: 10px; height:100% !important;">
+        <ons-row style="padding: 0 0 10px 0;">
+            <ons-col>
+               <div>
+                   <font style="color:white; padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}} &nbsp;<i class="fa fa-exclamation-circle"></i>&nbsp;</font>
+               </div>
+            </ons-col>
+        </ons-row>
+        
+        <ons-row style="padding: 10px; border-bottom:1px solid #d0d0d0; background:white; margin-top:1px; "  ng-repeat="field in note.fields">
+            <div style="display:table;margin-top:1px;padding:0;width:99%; padding-bottom:0px;">
+                <div ng-if="field.type=='textarea'"  class="fields" ng-include src="'partials/noteFields/textarea.html'"></div>
+                <div ng-if="field.type!=='textarea'"  class="fields" ng-include src="'partials/noteFields/' + field.type + '.html'"></div>
+            </div>
+        </ons-row>
+        <br>
+    </section>
+    
+    <ons-bottom-toolbar class="footbar" >
+   <!--     <div style="width:50% !important; float:left; text-align:center; font-weight:normal; text-shadow: 0px 1px 0px none; " class="left">
+            <ons-toolbar-button ng-click="share_note_list();">
+                <ons-icon icon="upload" size="lg" style="color:white !important"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    -->
+        <div style="width:100% !important; float:right; text-align:center; font-weight:normal; text-shadow: 0px 1px 0px none; " class="right">
+            <ons-toolbar-button ng-click="delete_note_list();">
+                <ons-icon icon="trash-o" size="lg" style="color:white !important;font-size:2em;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-bottom-toolbar>
+</ons-page>

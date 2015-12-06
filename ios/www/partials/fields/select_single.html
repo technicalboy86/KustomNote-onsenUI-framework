@@ -1,0 +1,15 @@
+<ons-row>
+    <ons-col width="40%">
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;">
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <select ng-required="field.required" id="{{field.id}}" class="text-input" name="{{field.id}}" ng-model="field.value">
+                <option value="" style="display:none;"></option>
+                <option ng-repeat="label in field.possible_values" ng-selected="field.selected.indexOf($index) > -1" value="{{label}}">{{label}}</option>
+            </select>
+        </font>
+    </ons-col>
+</ons-row>

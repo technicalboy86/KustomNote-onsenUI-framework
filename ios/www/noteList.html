@@ -1,0 +1,30 @@
+<ons-page ng-controller="noteListController" >
+    <ons-toolbar class="header-container">
+        <div class="left">
+            <ons-toolbar-button onclick="ons.slidingMenu.toggleMenu()">
+                <ons-icon icon="bars" >
+            </ons-toolbar-button>
+        </div>
+        
+        <div class="center">KustomNote</div>
+        
+    </ons-toolbar>
+
+
+<ons-list ng-repeat="noteGroup in notes"  class="list-top">
+    <ons-list-header>{{noteGroup[0].title}}</ons-list-header>
+    <ons-list-item ng-repeat="note in noteGroup" id="{{note.noteId}}" >
+        <a href ng-click="selectNote(note.id, $index)" class="">
+            <span class="template_title">{{note.title_prefix}} {{note.title_fields}}{{note.title_suffix}}</span>
+        </a>
+        
+        <div ng-init="isCollapsed = true" collapse="isCollapsed">
+            <button class="button" style="width:30%; margin:1%;" ng-click="selectNote(note.id, $index)"><ons-icon icon="eye"></ons-icon></button>
+            <button class="button" style="width:30%; margin:1%;" ng-click="noteEdit(note.id, $index)"><ons-icon icon="edit"></ons-icon></button>
+            <button class="button" style="width:30%; margin:1%;" ng-click="noteDelete(note.id, $index)"><ons-icon icon="trash-o"></ons-icon></button>
+        </div>
+    </ons-list-item>
+    <br>
+</ons-list>
+
+</ons-page>

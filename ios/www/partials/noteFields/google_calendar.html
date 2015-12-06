@@ -1,0 +1,76 @@
+<ons-row >
+    <ons-col>
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;">
+            {{field.title}}
+        </font>
+    </ons-col>
+</ons-row>
+<ons-row >
+    <ons-col width="30%">
+        <font style="font-size:0.8em; ">
+            Calendar:
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            {{field.cal.name}}
+        </font>
+    </ons-col>
+</ons-row>
+<ons-row >
+    <ons-col width="30%">
+        <font style="font-size:0.8em; ">
+            From:
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <span ng-hide="field.allDay">{{field.fromDate + '&nbsp;T&nbsp;' + field.fromTime +'&nbsp;' +field.timezone | date:'shortTime'}}, </span>
+            {{field.fromDate + '&nbsp;T16:00&nbsp;' + field.timezone | date:'mediumDate'}}
+        </font>
+    </ons-col>
+</ons-row>
+<ons-row >
+    <ons-col width="30%">
+        <font style="font-size:0.8em; ">
+            To:
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <span ng-hide="field.allDay">{{field.toDate + '&nbsp;T&nbsp;' + field.toTime +'&nbsp;'+ field.timezone | date:'shortTime'}}, </span>
+            {{field.toDate + '&nbsp;T16:00&nbsp;' + field.timezone | date:'mediumDate'}}
+        </font>
+    </ons-col>
+</ons-row>
+<ons-row >
+    <ons-col width="40%">
+        <font style="font-size:0.8em; ">
+            All Day
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <input disabled class="checkbox-input" type="checkbox" ng-model="field.allDay" />
+        </font>
+    </ons-col>
+</ons-row>
+<ons-row >
+    <ons-col width="40%">
+        <font style="font-size:0.8em; ">
+            Set Reminder
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <input disabled class="checkbox-input" type="checkbox" ng-model="field.setReminder" />
+        </font>
+    </ons-col>
+</ons-row>
+<ons-row >
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <span ng-if="field.setReminder">Reminder: {{field.remindBy}} {{field.remindVal}} {{field.remindUnit}}</span>
+        </font>
+    </ons-col>
+</ons-row>

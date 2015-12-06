@@ -1,0 +1,120 @@
+<ons-page ng-controller="RecentNoteController" >
+    <ons-toolbar class="header-container">
+        <div class="left">
+            <ons-toolbar-button ng-click="createNewNote()">
+                <ons-icon icon="file-o"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+
+        <div class="center">Recent Notes</div>
+        <div class="right">
+            <ons-toolbar-button  ng-click="gotoSelectPage();">
+            Select
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <div ng-hide="recentNotes.length" class="empty_page">
+        <img src="img/NoTemplates@3x.png" style="margin-top:60px;" / >
+            <p>You don't have any notes in your library.</p>
+    </div>
+ 
+ 
+    <ons-list class="list-top ">
+<!--    		<ons-list-item ng-repeat="note in justNowNotes" ng-swipe-left="showActions=true" ng-swipe-right="showActions=false" style="padding-right:0px">
+            <ons-row class="recent_note_list">
+                <ons-col  ng-click="showDetail($index)" style="padding:2px;">
+                    <p style="line-height:25px; margin:2px;">
+                    {{note.note_title}}
+                    </p>
+                    <div class="r_note_title">
+                    <font style="padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}}</font>
+                    </div>
+                </ons-col>
+                <ons-col width="20%" style="font-size:0.6em; height:100%;  color:#666;" ng-show="!showActions">
+                    <i>Just now</i>
+                </ons-col>
+                <ons-col class="delete_slide_btn" width="20%" height="100%"ng-show="showActions" ng-click="onDeleteBtn($index);">
+                    <p style="line-height:20px;">Delete</p>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+        <ons-list-item ng-repeat="note in earlierTodayNotes" ng-swipe-left="showActions=true" ng-swipe-right="showActions=false" style="padding-right:0px">
+            <ons-row class="recent_note_list">
+                <ons-col  ng-click="showDetail($index)" style="padding:2px;">
+                    <p style="line-height:25px; margin:2px;">
+                    {{note.note_title}}
+                    </p>
+                    <div class="r_note_title">
+                    <font style="padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}}</font>
+                    </div>
+                </ons-col>
+                <ons-col width="20%" style="font-size:0.6em; height:100%;  color:#666;" ng-show="!showActions">
+                    <i>Earlier today</i>
+                </ons-col>
+                <ons-col class="delete_slide_btn" width="20%" height="100%"ng-show="showActions" ng-click="onDeleteBtn($index);">
+                    <p style="line-height:20px;">Delete</p>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+        <div class="recent_notes_label" ng-if="yesterdayNotes.length>0">Yesterday</div>
+        <ons-list-item ng-repeat="note in yesterdayNotes" ng-swipe-left="showActions=true" ng-swipe-right="showActions=false" style="padding-right:0px">
+            <ons-row class="recent_note_list">
+                <ons-col  ng-click="showDetail($index)" style="padding:2px;">
+                    <p style="line-height:25px; margin:2px;">
+                    {{note.note_title}}
+                    </p>
+                    <div class="r_note_title">
+                    <font style="padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}}</font>
+                    </div>
+                </ons-col>
+                <ons-col width="20%" style="font-size:0.6em; height:100%;  color:#666;" ng-show="!showActions">
+                    <i>Yesterday</i>
+                </ons-col>
+                <ons-col class="delete_slide_btn" width="20%" height="100%"ng-show="showActions" ng-click="onDeleteBtn($index);">
+                    <p style="line-height:20px;">Delete</p>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+        <div class="recent_notes_label" ng->Earlier</div>
+ -->
+        <ons-list-item ng-repeat="note in recentNotes | limitTo: paginationLimit()" ng-swipe-left="showActions=true" ng-swipe-right="showActions=false" style="padding-right:0px">
+            <ons-row class="recent_note_list">
+                <ons-col  ng-click="showDetail($index)" style="padding:2px;">
+                    <p style="line-height:25px; margin:2px;">
+                    {{note.note_title}}
+                    </p>
+                    <div class="r_note_title">
+                    <font style="padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}}</font>
+                    </div>
+                </ons-col>
+                <ons-col width="20%" style="font-size:0.6em; height:100%;  color:#25282b;" ng-show="!showActions">
+                    <i>{{note.created_on}}</i>
+                </ons-col>
+       <!--         <ons-col class="share_slide_btn" width="20%" height="100%" ng-show="showActions" ng-click="onShareBtn();">
+                    <p style="line-height:20px;">Share</p>
+                </ons-col>-->
+                <ons-col class="delete_slide_btn" width="20%" height="100%"ng-show="showActions" ng-click="onDeleteBtn($index);">
+                    <p style="line-height:20px;">Delete</p>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+ 
+    <br>
+   <ons-row align="center">
+        <ons-col>
+            <ons-button ng-show="hasMoreItems()" ng-click="showMoreItems()" class="post-show-more"><i class="fa fa-angle-double-down more-icon"></i>Show more</ons-button>
+        </ons-col>
+    </ons-row>
+     <br>
+     
+    <ons-bottom-toolbar class="footbar" >
+        <div ng-repeat="item in items" ng-click="showMenuDetail($index)" class="home_bottom_toolbar {{item.active}}">
+            <ons-toolbar-button >
+                <ons-icon icon="{{item.icon}}" class="b_icon"></ons-icon>
+                <div class="b_icon_txt">{{item.title}}</div>
+            </ons-toolbar-button>
+        </div>
+    </ons-bottom-toolbar>
+    
+</ons-page>

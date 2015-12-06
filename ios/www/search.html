@@ -1,0 +1,73 @@
+<ons-page ng-controller="SearchViewController" sliding-menu-ignore="true" >
+    <ons-toolbar>
+    <div class="center">
+    
+    <ons-row style="margin:0px ; display:block; width:90%; margin-left:5%;">
+        <div class="button-bar" style="width:100%;">
+            <div class="button-bar__item">
+                <input type="radio" name="segment-a" checked />
+                <button class="button-bar__button">Simple</button>
+            </div>
+            <div class="button-bar__item"  ng-click="gotoAdvancedSearch()">
+                <input type="radio" name="segment-a" />
+                <button class="button-bar__button">Advanced</button>
+            </div>
+        </div>        
+    </ons-row>
+    </div>
+    </ons-toolbar>
+    <input class="search search-input" type="search" placeholder="Search Notes..." ng-model="search" ng-change="onSearch()" />
+    
+    <ons-list class="list-top" style="margin-top:10px;" ng-show="online">
+       
+        <ons-list-item ng-repeat="note in searchedList | limitTo: paginationLimit()">
+            <ons-row class="recent_note_list">
+                <ons-col  ng-click="showNoteDetail($index)" style="padding:2px;">
+                    <p style="line-height:25px; margin:2px;">
+                    {{note.note_title}}
+                    </p>
+                    <div class="r_note_title">
+                        <font style="padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}}</font>
+                    </div>
+                </ons-col>
+                <ons-col width="20%" style="font-size:0.6em; height:100%;   color:#666;">
+                    {{note.created_on}}
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+    <ons-list class="list-top" style="margin-top:10px;" ng-show="!online">
+        
+        <ons-list-item ng-repeat="note in recentNotes | filter: search">
+            <ons-row class="recent_note_list">
+                <ons-col  ng-click="showNoteDetail($index)" style="padding:2px;">
+                    <p style="line-height:25px; margin:2px;">
+                    {{note.note_title}}
+                    </p>
+                    <div class="r_note_title">
+                        <font style="padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}}</font>
+                    </div>
+                </ons-col>
+                <ons-col width="20%" style="font-size:0.6em; height:100%;   color:#666;">
+                    {{note.created_on}}
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+    
+    <ons-row align="center">
+        <ons-col>
+            <ons-button ng-show="hasMoreItems()" ng-click="showMoreItems()" class="post-show-more"><i class="fa fa-angle-double-down more-icon"></i>Show more</ons-button>
+        </ons-col>
+    </ons-row>
+    <br><br>
+    
+    <ons-bottom-toolbar class="footbar" >
+        <div  ng-repeat="item in items" ng-click="showDetail($index)" class="home_bottom_toolbar {{item.active}}">
+            <ons-toolbar-button >
+                <ons-icon icon="{{item.icon}}" class="b_icon"></ons-icon>
+                <div class="b_icon_txt">{{item.title}}</div>
+            </ons-toolbar-button>
+        </div>
+    </ons-bottom-toolbar>
+</ons-page>

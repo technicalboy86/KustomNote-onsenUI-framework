@@ -1,0 +1,94 @@
+    <ons-page ng-controller="HomeController">
+        <ons-modal var="modal">
+            <div class="my_template_sub_menu" id="my_template_sub_menu">
+                <br>
+              <!--  <button class="button modal-button" ng-click="create_blank_template()">Create Blank Template</button> -->
+                <button class="button modal-button" ng-click="clone_from_library()">Clone from Public Library</button>
+                
+                <button class="button modal-button" style="margin-top:10px;" ng-click="onModalCancel()">Close</button>
+                <br>
+            </div>
+        </ons-modal>
+        
+       <ons-toolbar>
+            <div class="left">
+ <!--             <ons-toolbar-button onclick="ons.slidingMenu.toggleMenu()">
+            <ons-icon icon="bars">
+            </ons-toolbar-button>
+    -->
+            </div>
+            
+            <div class="center">My Templates</div>
+            <div class="right" >
+ <!--               <ons-toolbar-button ng-if="mHideMe1">
+                    <ons-icon icon="check"></ons-icon>
+                </ons-toolbar-button>
+                 <ons-toolbar-button ng-if="mHideMe" >
+                    <ons-icon icon="refresh" ng-click="refresh()"></ons-icon>
+                 </ons-toolbar-button>
+ 
+                    <ons-toolbar-button  ng-click="showSubMenu()">
+                        <ons-icon icon="plus"></ons-icon>
+                    </ons-toolbar-button> -->
+            </div>
+        </ons-toolbar>
+        <input class="search search-input" type="search" placeholder="Search Templates..." ng-model="search.title" />
+    <!--    <ul class="templates_wrapper">
+            <li ng-repeat="template in templates | filter: {shared: false} | filter: search" id="{{template.id}}" class="template_box">
+                <div class="template_color" style="background-color: {{template.color}}">
+                    <a class="box template_link" ng-click="selectTemplate(template.id, template.index)">
+                        <span ui-if="template.use_sprite" class="tiny_sprite tiny_{{template.icon}}"></span>
+                        <span ui-if="!template.use_sprite" class="black_sprite black_{{template.icon.slice(0, -4)}}"></span>
+                        <span class="fit_title template_title">{{template.title}}</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        
+        <ul class="shared templates_wrapper">
+            <li ng-repeat="template in templates | filter:{shared: true} | filter: search" id="{{template.id}}" class="template_box">
+                <div class="template_color" style="background-color: {{template.color}}">
+                    <a class="box template_link" ng-click="selectTemplate(template.id, template.index)">
+                        <span ui-if="!template.use_sprite" class="black_sprite black_{{template.icon.slice(0, -4)}}"></span>
+                        <span ui-if="template.use_sprite" class="tiny_sprite tiny_{{template.icon}}"></span>
+                        <span class="fit_title template_title">{{template.title}}</span>
+                        <span class="shared-text fit_title">Shared By: {{template.shared_by}}</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    -->
+
+    </ons-list>
+        <div ng-hide="templates.length" class="empty_page">
+            <img src="img/NoTemplates@3x.png" / >
+            <p>Create a template, or import one from the public library to get started.</p>
+        </div>
+        <ons-list class="list-top" style="margin-top:10px;" ng-show="!IsEmpty">
+        	<ons-list-item ng-repeat="template in templates | filter: search" id="{{template.id}}" style="padding-right:0px">
+            <ons-row >
+                <ons-col width="10%" ng-click="selectTemplate(template.id, template.index)">
+                    <font ><div style="border-radius:50%; background:{{template.color}}; color:white; text-align:center;width:24px;height:24px; margin-top:14px;padding:0px; line-height:20px;"><i class="fa {{template.icon}}" style="margin-top:4px;"></i></div></font>
+                </ons-col>
+                <ons-col ng-click="selectTemplate(template.id, template.index)">
+               	 <p style="line-height:20px;font-size:0.8em;">{{template.title}}</p>
+               </ons-col>
+               <ons-col width="15%" ng-show="!showEditActions" ng-click="selectTemplate(template.id, template.index)">
+                  <i style="font-size:0.6em;color:#999;">{{template.notes_count}}&nbsp;notes</i>
+               </ons-col>
+               <ons-col class="delete_slide_btn" width="20%" height="100%" ng-show="showEditActions" ng-click="onEditBtn($index);">
+                   <p style="line-height:20px;">Edit</p>
+               </ons-col>
+            </ons-row>
+        	</ons-list-item>
+    	</ons-list>
+    
+        <ons-bottom-toolbar class="footbar" >
+            <div  ng-repeat="item in items" ng-click="showMenuDetail($index)" class="home_bottom_toolbar {{item.active}}">
+                <ons-toolbar-button >
+                    <ons-icon icon="{{item.icon}}" class="b_icon"></ons-icon>
+                    <div class="b_icon_txt">{{item.title}}</div>
+                </ons-toolbar-button>
+            </div>
+        </ons-bottom-toolbar>
+    </ons-page>

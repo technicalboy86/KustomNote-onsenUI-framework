@@ -1,0 +1,35 @@
+  <!--
+
+    <textarea ng-required="field.required" ng-if="!clone.cloned" id="{{field.id}}" name="{{field.id}}" ng-model="field.value" class="textarea"></textarea>
+    <textarea ng-required="field.required" ng-if="clone.cloned" id="{{field.id}}" name="{{field.id}}" ng-model="clone.value" class="textarea"></textarea>
+
+
+      <button ng-hide="clone.cloned" class="add btn" ng-click="addField(field, $index)">Add</button>
+      <button ng-show="clone.cloned" class="remove btn" ng-click="removeField(field, $index)">Remove</button>
+    -->
+
+<ons-row >
+    <ons-col width="40%" for="{{field.id}}" >
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;" ng-hide="clone.cloned" >
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; " ng-if="!clone.cloned" >
+                <textarea ng-required="field.required" ng-if="!clone.cloned" id="{{field.id}}" name="{{field.id}}" ng-model="field.value" class="textarea" style="width:95% !important;  "></textarea>
+                <textarea ng-required="field.required" ng-if="clone.cloned" id="{{field.id}}" name="{{field.id}}" ng-model="clone.value" class="textarea" style="width:95% !important;"></textarea>
+        </font>
+    </ons-col>
+</ons-row>
+<!--
+<ons-row >
+    <ons-col>
+        <font style="font-size:0.8em; " ng-if="!clone.cloned" >
+            <form method="post" action="">
+                <textarea ng-required="field.required" ng-if="!clone.cloned" id="{{field.id}}" name="{{field.id}}" ng-model="field.value" class="textarea" style="width:95% !important; margin-top:10px !important; "></textarea>
+                <textarea ng-required="field.required" ng-if="clone.cloned" id="{{field.id}}" name="{{field.id}}" ng-model="clone.value" class="textarea" style="width:95% !important; margin-top:10px !important; "></textarea>
+            </form>
+        </font>
+    </ons-col>
+</ons-row>
+-->

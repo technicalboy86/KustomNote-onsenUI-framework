@@ -1,0 +1,37 @@
+<ons-row ng-if="!offline" ng-init="checkFiles(field.files, $index)">
+    <ons-col width="45%" for="{{field.id}}" >
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;" ng-hide="clone.cloned" ng-init="setFileIndex($index)">
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col>
+        <label ng-hide="clone.cloned" for="{{field.id}}" ng-init="setFileIndex($index)" ></label>
+        <div ng-if="files" ng-init="field.required = false">
+            <span ng-repeat="value in field.value">{{value}} <br /></span>
+            <span ng-if="field.value[0]">&nbsp;&nbsp;&nbsp;Edit Files:</span>
+        </div>
+        <input ng-init="field.required =false" id="{{field.id}}" name="{{field.id}}" type="file" onchange="angular.element(this).scope().setFiles(this)" style="width:55% !important;"/>
+    </ons-col>
+</ons-row>
+<ons-row ng-if="offline" ng-init="fileAlert()">
+    <ons-col width="40%" for="{{field.id}}" >
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;" ng-hide="clone.cloned" >
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            <input id="{{field.id}}" disabled name="{{field.id}}" type="file"  class="text-input" style="width:55% !important;"/>
+        </font>
+    </ons-col>
+</ons-row>
+<ons-row ng-if="device.platform=='Android'">
+    <ons-col width="40%" for="{{field.id}}" >
+        
+    </ons-col>
+    <ons-col>
+        <font style="font-size:0.8em; ">
+            Not supported
+        </font>
+    </ons-col>
+</ons-row>

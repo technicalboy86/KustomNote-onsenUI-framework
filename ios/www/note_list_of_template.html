@@ -1,0 +1,50 @@
+<ons-page ng-controller="NoteListOfTemplateController">
+    
+    <ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+    <div class="center">{{m_title}}</div>
+    <div class="right">
+        <ons-toolbar-button  ng-click="gotoSelectPage();">
+            Select
+        </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+    
+    <div ng-hide="notelist.length" class="empty_page">
+        <img src="img/NoTemplates@3x.png" style="margin-top:60px;" / >
+        <p ng-show="online" >You don't have any notes in your library.</p>
+        <p ng-hide="online" >You can't see your notes because you are offline but you can create notes.</p>
+    </div>
+    <ons-list class="list-top">
+        <ons-list-item ng-repeat="note in notelist | limitTo: paginationLimit()" ng-swipe-left="showActions=true" ng-swipe-right="showActions=false" style="padding-right:0px">
+            <ons-row >
+                <ons-col ng-click="showDetail($index)"><p style="line-height:20px;">{{note.note_title}}</p></ons-col>
+      <!--          <ons-col class="share_slide_btn" width="20%" height="100%" ng-show="showActions" ng-click="onShareBtn();">
+                    <p style="line-height:20px;">Share</p>
+                </ons-col> -->
+                <ons-col class="delete_slide_btn" width="20%" height="100%" ng-show="showActions" ng-click="onDeleteBtn($index);">
+                    <p style="line-height:20px;">Delete</p>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+    <br>
+    <ons-row align="center">
+        <ons-col>
+            <ons-button ng-show="hasMoreItems()" ng-click="showMoreItems()" class="post-show-more"><i class="fa fa-angle-double-down more-icon"></i>Show more</ons-button>
+        </ons-col>
+    </ons-row>
+    <br>
+    <ons-bottom-toolbar class="footbar" >
+        <div style="width:50% !important; float:left; text-align:left; font-weight:normal; text-shadow: 0px 1px 0px none; " class="left">
+            <ons-toolbar-button >
+                <font style="border-radius:50%; background:{{m_color}}; color:white; text-align:center; width:20px;height:20px;"><i class="fa fa-book"></i></font><font style="color:#3075a3">&nbsp;{{m_notes_count}}&nbsp;Notes</font>
+            </ons-toolbar-button>
+        </div>
+        <div style="width:50% !important;float:right; text-align:right; font-weight:normal; text-shadow: 0px 1px 0px none; " class="right">
+            <ons-toolbar-button ng-click="create_note();">
+                <ons-icon icon="file-o" style="color:#3075a3 !important"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-bottom-toolbar>
+</ons-page>

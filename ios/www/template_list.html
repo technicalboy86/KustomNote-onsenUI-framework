@@ -1,0 +1,21 @@
+<ons-page ng-controller="TemplateListController"  sliding-menu-ignore="true">
+    
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">{{title}}</div>
+    </ons-toolbar>
+    
+    <ons-list class="list-top">
+        <ons-list-item ng-repeat="category in subCategories">
+            <ons-row>
+                <ons-col ng-click="gotoPublicTemplateDetail($index)">
+                    {{category.title}}
+                </ons-col>
+                
+                <ons-col width="10%" style="font-size:0.8em;" ng-click="gotoCloneTemplateDetail($index)">
+                    <ons-icon icon="plus"></ons-icon>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

@@ -1,0 +1,45 @@
+<ons-page ng-controller="AddProfileController" sliding-menu-ignore="true" class="add_profile_page">
+    <section class="login_section">
+        <ons-toolbar class="login_toolbar">
+            <div class="left" ><ons-back-button ></ons-back-button></div>
+            <div class="center"><img src="img/KN-Logo.png"></div>
+        </ons-toolbar>
+        <br><br>
+        <div class="add-photo-text">Add your name to start your profile.</div>
+  <!--      <div class="profile_img_rect">
+            <img class="profile_img" src="img/user_profile.png" id="profile_img" ng-click="profile_photo_add();"/>
+        </div>
+      -->
+        <input ng-model="user_name" type="text" class="text-input--underbar user_name_txt" placeholder="Your name">
+        <br>
+        
+        <button class="button create_account_btn" id="create_account_btn" ng-click="create_account(user_name);">Create account</button>
+        <br>
+        
+        <div class="e_policy_holder">
+            Optional profile info
+            <a class="arrow_up_icon" href="#" ><ons-icon icon="angle-down" style=" color:white !important;"></ons-icon> </a>
+            <a class="arrow_down_icon" href="#" style="display:none;"> <ons-icon icon="angle-up" style=" color:white !important;"></ons-icon></a>
+        </div>
+        <div class="option_profile_content">
+            <ul id="s_profile_list">
+                <li class="thumb">
+                    <input type="text" class="text-input--underbar optional_input" placeholder="Optional">
+                        </li>
+                <li class="thumb">
+                    <input type="text" class="text-input--underbar optional_input" placeholder="Profile">
+                        </li>
+                <li class="thumb">
+                    <input type="text" class="text-input--underbar optional_input" placeholder="Info">
+                        </li>
+                <li class="thumb">
+                    <input type="text" class="text-input--underbar optional_input" placeholder="Fields">
+                        </li>
+            </ul>
+            <br>
+        </div>
+    </section>
+ </ons-page>
+
+
+

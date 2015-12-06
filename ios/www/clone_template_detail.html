@@ -1,0 +1,48 @@
+<ons-page ng-controller="CloneTemplateDetailController">
+    
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Clone Template</div>
+        <div class="right">
+            <ons-toolbar-button ng-click="doneBtn()">
+                Done
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <section style="padding: 10px">
+        <ons-row style="padding: 10px; border-bottom:1px solid #ddd; ">
+            <ons-col width="30%" style="font-weight:bold;">
+                Title
+            </ons-col>
+            <ons-col style="color:#666; ">
+                {{mTemplate.title}}
+            </ons-col>
+        </ons-row>
+        <ons-row style="padding: 10px; border-bottom:1px solid #ddd; ">
+            <ons-col width="30%"  style="font-weight:bold;">
+                Description
+            </ons-col>
+            <ons-col style="color:#666; ">
+               
+            </ons-col>
+        </ons-row>
+        <ons-row style="padding: 10px; border-bottom:1px solid #ddd; ">
+            <ons-col width="30%"  style="font-weight:bold;">
+                Color
+            </ons-col>
+            <ons-col style="color:#666; ">
+                {{mTemplate.color}}
+            </ons-col>
+        </ons-row>
+        <ons-row style="padding: 10px; border-bottom:1px solid #ddd; ">
+            <ons-col width="30%"  style="font-weight:bold;">
+                Icon
+            </ons-col>
+            <ons-col style="color:#666; ">
+                {{mTemplate.icon}}
+            </ons-col>
+        </ons-row>
+    </section>
+    
+</ons-page>

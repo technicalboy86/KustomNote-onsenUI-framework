@@ -1,0 +1,90 @@
+<ons-page ng-controller="TemplateDetailController" class="note_detail_page">
+    <ons-modal var="delete_modal">
+        <div class="delete_sub_menu" id="delete_sub_menu">
+            <br>
+            <div class="delete_message_label">Deleting your template will also remove all notes associated with it.</div>
+            <div class="delete_message_label">This cannot be undone.</div>
+            <br>
+            <button class="button modal-button" ng-click="delete_template()">Delete Template</button>
+            
+            <button class="button modal-button" style="margin-top:10px;" ng-click="onDeleteModalCancel()">Close</button>
+            <br>
+        </div>
+    </ons-modal>
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Template Details</div>
+    </ons-toolbar>
+    
+    <section class="setting_section">
+  <br>
+  <ons-list class="list-top" style="background:white; width:96%; margin-left:2%;line-height:20px;">
+      <ons-list-item>
+          <ons-row>
+              <ons-col>
+                  <font class="setting_field_label">Title</font>
+              </ons-col>
+              <ons-col>
+                  {{m_template.title}}
+              </ons-col>
+          </ons-row>
+      </ons-list-item>
+      <ons-list-item>
+          <ons-row>
+              <ons-col>
+                  <font class="setting_field_label">Description</font>
+              </ons-col>
+          </ons-row>
+          <ons-row>
+              <ons-col>
+                  <p style="line-height:20px;"> {{m_template.desc}} </p>
+              </ons-col>
+          </ons-row>
+      </ons-list-item>
+      <ons-list-item modifier="chevron" >
+          <ons-row>
+              <ons-col>
+                  <font class="setting_field_label">Color</font>
+              </ons-col>
+              <ons-col>
+                 <font  style="float:right; margin-right:20px;"><div style="border-radius:50%; background:{{m_template.color}}; color:white; text-align:center;width:20px;height:20px; margin-top:12px;padding:0px; line-height:20px;"><i class="fa {{m_template.icon}}"></i></div></font>
+              </ons-col>
+          </ons-row>
+      </ons-list-item>
+      <ons-list-item modifier="chevron" >
+          <ons-row>
+              <ons-col>
+                  <font class="setting_field_label">Icon</font>
+              </ons-col>
+              <ons-col>
+                  <font style="float:right; margin-right:20px;"><div style="border-radius:50%;color:{{m_template.color}}; text-align:center;width:20px;height:20px; margin-top:12px;padding:0px; line-height:20px;"><i class="fa fa-book"></i></div></font>
+              </ons-col>
+          </ons-row>
+      </ons-list-item>
+      <ons-list-item>
+          <ons-row>
+              <ons-col>
+                  <font class="setting_field_label" style="line-height:22px;">Automatic Tags</font>
+              </ons-col>
+          </ons-row>
+          <ons-row>
+              <ons-col>
+                  <p style="background:#3075a3; border-radius:3px; color:white; float:left; margin-left:5px; line-height:22px; padding:2px;" ng-repeat="tag in tags">{{tag}}</p>
+              </ons-col>
+          </ons-row>
+      </ons-list-item>
+      <ons-list-item modifier="chevron" >
+          <ons-row ng-click="gotoEditTemplateField()">
+              <ons-col>
+                  <font class="setting_field_label">Edit Template Fields</font>
+              </ons-col>
+          </ons-row>
+      </ons-list-item>
+      
+  </ons-list>
+  
+  <ons-button class="delete_template_btn" ng-click="showDeleteMenu()">Delete Template</ons-button>
+  
+  </section>
+
+</ons-page>

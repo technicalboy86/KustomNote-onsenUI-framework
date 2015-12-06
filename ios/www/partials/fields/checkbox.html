@@ -1,0 +1,16 @@
+<ons-row >
+    <ons-col width="50%">
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f; width:150px !important;">
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col>
+        <div>
+            <label class="checkbox" style="width:100px !important;">
+                <input id="{{field.id}}-0" name="{{field.id}}" type="checkbox" ng-model="field.value[0]" ng-value="{{field.title}}"/>
+                <div class="checkbox__checkmark" ng-click="setCheck(field, 0)"></div>
+                <font style="font-size:0.8em; ">{{label}}</font>
+            </label>
+        </div>
+    </ons-col>
+</ons-row>

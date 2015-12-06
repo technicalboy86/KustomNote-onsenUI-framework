@@ -1,0 +1,26 @@
+    <ons-page ng-controller="CreateAccountController" sliding-menu-ignore="true" class="signup_page">
+       
+        <section class="login_section">
+            <ons-toolbar class="login_toolbar">
+                <div class="left" ><ons-back-button ></ons-back-button></div>
+                <div class="center"><img src="img/KN-Logo.png"></div>
+            </ons-toolbar>
+            <br><br>
+            <div class="signup-text">Enter your email and password to get started.</div>
+            <form class="login-form" ng-submit="validateSignUser(signupEmail, signupPass)">
+                <input type="email" ng-model="signupEmail" name="sign_email" id="sign_email" placeholder="Email" class="text-input--underbar"/>
+                <input type="password" type="text" ng-model="signupPass" class="text-input--underbar" name="sign_password" id="sign_password" placeholder="Password"/>
+                <br>
+                <div class="terms-text"><i>By signing up, you are agreeing to KustomNotes <b ng-click="onClickTerms()">Terms of Services</b> and <b ng-click="onClickPolicy()">Privacy Policy</b>.</i></div>
+                <br>
+                <div class="submit">
+                    <button class="button login-button" id="signup">Create Account</button>
+                </div>
+            </form>
+            
+        </section>
+        
+    </ons-page>
+
+
+

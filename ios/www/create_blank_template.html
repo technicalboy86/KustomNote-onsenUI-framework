@@ -1,0 +1,22 @@
+<ons-page ng-controller="CreateTemplateController"  sliding-menu-ignore="true">
+    
+    <ons-toolbar>
+    <div class="left"><ons-back-button>Back</ons-back-button></div>
+    <div class="center">Create Template</div>
+    <div class="right" >
+        <ons-toolbar-button ng-click="nextBtn()">
+            Next
+        </ons-toolbar-button>
+    </div>
+    </ons-toolbar>
+    
+    <br>
+    <ons-row  ng-repeat="aField in fieldsArray"  class="new_field">
+        <h5 ng-click="edit($index);">{{aField.title}}</h5>
+        <div ng-click="close($index);"><ons-icon icon="times"></ons-icon></div>
+        <div ng-if="IsValid(aField.valid)" ng-click="edit($index);">name&nbsp;:&nbsp;{{aField.name}}</div>
+        <input type="text"  placeholder="Field Name" class="text-input" ng-if="!IsValid(aField.valid)" ng-model="aField.name"></input>&nbsp;&nbsp;<button ng-if="!IsValid(aField.valid)" class="button" ng-click="saveName($index);"><ons-icon icon="save"></ons-icon></button>
+    </ons-row>
+    <br>
+    <button class="button login-button" ng-click="addField()">Add Template Filed</button>
+</ons-page>

@@ -1,0 +1,14 @@
+<ons-page ng-controller="MenuController">
+    <ons-list class="list-top">
+        <ons-list-item ng-repeat="item in items" ng-click="menu.toggleMenu(); showDetail($index)">
+            <ons-row>
+                <ons-col>
+                    {{item.title}}
+                </ons-col>
+                <ons-col width="15%">
+                    <ons-icon icon="{{item.icon}}"></ons-icon>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

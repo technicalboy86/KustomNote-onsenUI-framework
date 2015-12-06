@@ -1,0 +1,25 @@
+<ons-page ng-controller="PublicTemplateDetailController">
+    
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">{{mTemplate.title}}</div>
+        <div class="right" >
+            <ons-toolbar-button ng-click="clone()">
+                Clone
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <section style="padding: 10px">
+        <ons-row style="padding: 10px; border-bottom:1px solid #ddd; "  ng-repeat="field in mTemplate.fields">
+            <ons-col style="font-weight:bold;">
+                {{field.title}}
+            </ons-col>
+            <ons-col width="40%" style="color:#666; ">
+                {{field.type}}
+            </ons-col>
+        </ons-row>
+       
+    </section>
+    
+</ons-page>

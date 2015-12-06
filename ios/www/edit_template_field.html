@@ -1,0 +1,41 @@
+<ons-page ng-controller="EditTemplateFieldController" sliding-menu-ignore="true" class="note_detail_page">
+    
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Close</ons-back-button></div>
+        <div class="center">Edit Template</div>
+        <div class="right">
+            <ons-toolbar-button >
+                Save
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <section class="setting_section">
+
+    <ons-list class="list-top">
+        <ons-list-item ng-repeat="field in m_template.fields">
+            <ons-row >
+                <ons-col >
+                    <ons-list-item modifier="chevron" style="padding:0px !important;">
+                        <ons-row style="padding:0px !important;">
+                            <ons-col style="padding:0px !important;">
+                                <p style="line-height:20px;">{{field.type}}</p>
+                                <p style="line-height:20px; font-size:0.8em;color:#999;">{{field.title}}</p>
+                            </ons-col>
+                        </ons-row>
+                    </ons-list-item>
+                </ons-col>
+                <ons-col width="10%" height="100%">
+                    <p style="line-height:20px; vertical-align: middle;">
+                    <ons-icon icon="bars" style="color:#999; margin-top:15px;"></ons-icon>
+                    </p>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+
+    </ons-list>
+
+    <ons-button class="add_template_field_btn">Add Template Field</ons-button>
+    
+    <br>
+    </section>
+</ons-page>

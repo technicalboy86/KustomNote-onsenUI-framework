@@ -1,0 +1,28 @@
+ <!-- <label  class="field-label"ng-init="field.required && setRadio(field, 0, field.possible_values[0]) || ''">{{field.title}}</label>
+<div class="{{field.type}}-container" ng-repeat="label in field.possible_values" >
+  
+  
+    &nbsp;&nbsp;&nbsp;<label class="radio-button">
+        <input class="{{field.type}}" id="{{field.id}}-{{$index}}" name="{{field.id-$index}}" type="radio" ng-model="field.value" value="{{label}}">
+            <div ng-click="setRadio(field, $index, label)" for="{{field.id}}-{{$index}}" class="radio-button__checkmark" ></div>
+            {{label}}
+    </label>
+
+</div>
+-->
+<ons-row>
+    <ons-col width="40%">
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;" ng-init="field.required && setRadio(field, 0, field.possible_values[0]) || ''">
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col>
+        <div ng-repeat="label in field.possible_values" style="width:150px !important;height:25px;line-height:25px;margin:0px;padding:0px;">
+            &nbsp;&nbsp;&nbsp;<label class="radio-button" style="width:140px !important; height:25px;line-height:25px; margin:0px;margin-top:-20px;padding:0px;">
+                <input id="{{field.id}}-{{$index}}" name="{{field.id-$index}}" type="radio" ng-model="field.value" value="{{label}}">
+                    <div ng-click="setRadio(field, $index, label)" for="{{field.id}}-{{$index}}" class="radio-button__checkmark" ></div>
+                    {{label}}
+                    </label>
+        </div>
+    </ons-col>
+</ons-row>

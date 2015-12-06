@@ -1,0 +1,18 @@
+<ons-page ng-controller="FieldTypeController" sliding-menu-ignore="true">
+    
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Close</ons-back-button></div>
+        <div class="center">Field Type</div>
+    </ons-toolbar>
+    
+    <ons-list class="list-top">
+        <ons-list-item modifier="chevron" ng-repeat="item in items">
+            <ons-row ng-click="selectItem($index)">
+                <ons-col>
+                    {{item.title}}
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+    
+</ons-page>

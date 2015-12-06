@@ -1,0 +1,53 @@
+<ons-page ng-controller="SelectNoteController" class="select_note_page" >
+    <ons-toolbar class="header-container">
+        <div class="center">Select Notes</div>
+        <div class="right">
+            <ons-toolbar-button  ng-click="OnDoneBtn();">
+                Done
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <ons-list class="list-top">
+        <ons-list-item ng-repeat="note in recentNotes | limitTo: paginationLimit()">
+            <ons-row class="recent_note_list">
+                <ons-col width="10%" style="padding:5px;">
+                    <label class="checkbox" ><input id="rn_{{note.guid}}" name="" type="checkbox"/>
+                        <div class="checkbox__checkmark"></div>
+                    </label>
+                </ons-col>
+                <ons-col  ng-click="showDetail($index)" style="padding:2px;">
+                    <p style="line-height:25px; margin:2px;">
+                    {{note.note_title}}
+                    </p>
+                    <div class="r_note_title">
+                        <font style="padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}}</font>
+                    </div>
+                </ons-col>
+                <ons-col width="20%" style="font-size:0.6em; height:100%; color:#666;">
+                    <i>{{note.created_on}}</i>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+    <br>
+    <ons-row align="center">
+        <ons-col>
+            <ons-button ng-show="hasMoreItems()" ng-click="showMoreItems()" class="post-show-more"><i class="fa fa-angle-double-down more-icon"></i>Show more</ons-button>
+        </ons-col>
+    </ons-row>
+    <br>
+    <ons-bottom-toolbar class="footbar" >
+        <!--<div style="width:50% !important; float:left; text-align:center; font-weight:normal; text-shadow: 0px 1px 0px none; " class="left">
+            <ons-toolbar-button ng-click="share_note_list();">
+                <ons-icon icon="upload" size="lg" style="color:white !important"></ons-icon>
+            </ons-toolbar-button>
+        </div>-->
+        <div style="width:100% !important;float:right; text-align:center; font-weight:normal; text-shadow: 0px 1px 0px none; " class="right">
+            <ons-toolbar-button ng-click="delete_note_list();">
+                <ons-icon icon="trash-o" size="lg" style="color:white !important;font-size:2em;"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-bottom-toolbar>
+</ons-page>
+

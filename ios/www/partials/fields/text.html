@@ -1,0 +1,13 @@
+<ons-row >
+<ons-col width="40%" for="{{field.id}}" >
+    <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;" ng-hide="clone.cloned" >
+        {{field.title}}
+    </font>
+</ons-col>
+<ons-col>
+    <font style="font-size:0.8em; ">
+        <input ng-required="field.required" ng-if="!clone.cloned" id="{{field.id}}" ng-model="field.value" type="text" class="text-input" style="width:95% !important;"/>
+        <input ng-required="field.required" ng-if="clone.cloned" id="{{field.id}}" ng-model="clone.value" type="text" class="text-input" style="width:95% !important;"/>
+    </font>
+</ons-col>
+</ons-row>

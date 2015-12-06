@@ -1,0 +1,33 @@
+<ons-navigator title="Navigator" var="appNavigator">
+    
+    <ons-page ng-controller="FirstPageController" sliding-menu-ignore="true">
+      
+        <!--<ul rn-carousel rn-carousel-indicator rn-carousel-control>
+            <li ng-repeat="slide in slides">
+                <img ng-src="{{slide.picture}}"/>
+            </li>
+        </ul>
+         -->
+        <div class="splash_rect">
+            <img src="img/KN-Logotype@3x.png" class="logo"/>
+            <div class="m_line" >&nbsp;</div>
+            <div class="big_text">
+                MAKE YOUR
+            </div>
+            <div class="big_text">
+                NOTETAKING
+            </div>
+            <div class="big_text">
+                PAY OFF
+            </div>
+            <div class="small_text">
+                Fast and flexible on the go templates and forms for your notes.
+            </div>
+        </div>
+        <div class="splash login" ng-click="gotoLogin();"><p>Sign In</p></div>
+        <div class="splash signup" ng-click="gotoSignup();"><p>Create new Account</p></div>
+      
+    </ons-page>
+</ons-navigator>
+
+

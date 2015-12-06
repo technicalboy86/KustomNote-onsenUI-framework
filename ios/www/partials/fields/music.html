@@ -1,0 +1,34 @@
+    <!--
+<label class="field-label" for="mock_id_field_{{field.id}}">{{field.title}}</label>
+<div ng-if="offline" ng-init="smartAlert()">
+    <input id="mock_id_field_{{field.id}}" ng-model="field.displayValue" disabled type="text"  class="text-input"/>
+    <input ng-init="smartSuggest(field.id, field.social_id, field.type)" disabled id="{{field.id}}" type="hidden"  class="text-input"/>
+</div>
+
+<div ng-if="!offline">
+    <input ng-required="field.required" id="mock_id_field_{{field.id}}" ng-model="field.displayValue" type="text"  class="text-input"/>
+    <input ng-init="smartSuggest(field.id, field.social_id, field.type)" id="{{field.id}}" type="hidden"  class="text-input"/>
+</div>
+
+
+     -->
+
+<ons-row >
+    <ons-col width="40%" for="mock_id_field_{{field.id}}" >
+        <font style="font-weight:bold; font-size:0.8em; color:#8f8f8f;" >
+            {{field.title}}
+        </font>
+    </ons-col>
+    <ons-col ng-if="offline" ng-init="smartAlert()">
+        <font style="font-size:0.8em; ">
+            <input id="mock_id_field_{{field.id}}" ng-model="field.displayValue" disabled type="text"  class="text-input" style="width:95% !important;"/>
+            <input ng-init="smartSuggest(field.id, field.social_id, field.type)" disabled id="{{field.id}}" type="hidden"  class="text-input" style="width:95% !important;"/>
+        </font>
+    </ons-col>
+    <ons-col ng-if="!offline">
+        <font style="font-size:0.8em; ">
+            <input ng-required="field.required" id="mock_id_field_{{field.id}}" ng-model="field.displayValue" type="text"  class="text-input" style="width:95% !important;"/>
+            <input ng-init="smartSuggest(field.id, field.social_id, field.type)" id="{{field.id}}" type="hidden"  class="text-input" style="width:95% !important;"/>
+        </font>
+    </ons-col>
+</ons-row>

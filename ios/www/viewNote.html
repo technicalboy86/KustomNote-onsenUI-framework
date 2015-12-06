@@ -1,0 +1,72 @@
+<ons-page ng-controller="viewNoteController" class="view_note_page">
+   <ons-toolbar class="header-container">
+   <div class="left">
+        <ons-toolbar-button ng-click="gotoHome(noteTemplateId, noteIndex)">
+            <ons-icon icon="angle-left">
+        </ons-toolbar-button>
+    </div>
+   <div class="center">KustomNote</div>
+   <div class="right">
+       <ons-toolbar-button  ng-click="noteEdit(noteTemplateId, noteIndex)">
+           Edit
+       </ons-toolbar-button>
+   </div>
+   </ons-toolbar>
+<!--   <ons-toolbar class="header-container">
+        <div class="left"><ons-back-button style="color:white;"></ons-back-button></div>
+        <div class="center"><div class="logo"></div></div>
+    </ons-toolbar>
+  -->
+<section style="padding: 10px; height:100% !important;">
+    <ons-row style="padding: 0 0 10px 0;">
+        <ons-col>
+            <div>
+                <font style="color:white; padding:2px; border-radius:3px; background:{{note.color}}">{{note.title}} &nbsp;<i class="fa fa-exclamation-circle"></i>&nbsp;</font>
+            </div>
+        </ons-col>
+    </ons-row>
+
+    <ons-row style="padding: 10px; border-bottom:1px solid #d0d0d0; background:white; margin-top:1px; "  ng-repeat="field in note.fields">
+        <div style="display:table;margin-top:1px;padding:0;width:99%; padding-bottom:0px;">
+            <div class="fields" ng-include src="'partials/noteFields/' + field.type + '.html'"></div>
+        </div>
+    </ons-row>
+    <br>
+</section>
+
+<!--
+<div id="{{note.noteId}}" class="note-view">
+    <div id="{{field.id}}" ng-repeat="field in note.fields" style="background:white;">
+        
+            <div class="fields" ng-include src="'partials/noteFields/' + field.type + '.html'"></div>
+            
+            <div ng-repeat="clone in field.clones" class="clones fields" ng-include src="'partials/noteFields/' + field.type + '.html'"></div>
+        </div>
+
+    <button class="button" ng-click="noteSubmit(noteTemplateId, noteIndex)" style="width:30%; margin:1%;">Submit</button>
+    <button class="button" ng-click="noteEdit(noteTemplateId, noteIndex)" style="width:30%; margin:1%;">Edit</button>
+    <button class="button" ng-click="noteDelete(noteTemplateId, noteIndex)" style="width:30%; margin:1%;">Delete</button>
+</div>
+
+<div ng-if="progressVisible">
+    <div class="percent">{{progress}}%</div>
+    <div class="progress-bar">
+        <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
+    </div>
+</div>
+ 
+ -->
+<ons-bottom-toolbar class="footbar" >
+<!--    <div style="width:50% !important; float:left; text-align:center; font-weight:normal; text-shadow: 0px 1px 0px none; " class="left">
+        <ons-toolbar-button ng-click="noteShare();">
+            <ons-icon icon="upload" size="lg" style="color:white !important"></ons-icon>
+        </ons-toolbar-button>
+    </div>
+ -->
+    <div style="width:100% !important;float:right; text-align:center; font-weight:normal; text-shadow: 0px 1px 0px none; " class="right">
+        <ons-toolbar-button ng-click="noteDelete(noteTemplateId, noteIndex);">
+            <ons-icon icon="trash-o" size="lg" style="color:white !important;font-size:2em;"></ons-icon>
+        </ons-toolbar-button>
+    </div>
+</ons-bottom-toolbar>
+</ons-page>
